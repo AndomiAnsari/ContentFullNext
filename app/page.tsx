@@ -1,7 +1,17 @@
 import Image from 'next/image'
 
-export default function Home() {
+import "../styles/globals.css";
+import { wrapper, store } from "../store/store";
+import { Provider } from "react-redux";
+
+function MyApp({ Component, pageProps }) {
   return (
- <h1>hello</h1>
-  )
+    <>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </>
+  );
 }
+
+export default wrapper.withRedux(MyApp);
